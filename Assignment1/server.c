@@ -5,10 +5,11 @@
 #include <stdlib.h> 
 #include <netinet/in.h> 
 #include <string.h> 
-#define PORT 8080 
+#define PORT 80 
 int main(int argc, char const *argv[]) 
 { 
     //assuming here is executing as a root or admin
+    setuid(0);
     int server_fd, new_socket, valread; 
     struct sockaddr_in address; 
     int opt = 1; 
