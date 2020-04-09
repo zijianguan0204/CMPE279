@@ -11,7 +11,6 @@ int main(int argc, char const *argv[])
 
 
     //assuming here is executing as a root or admin
-    setuid(0);
     int server_fd, new_socket, valread; 
     struct sockaddr_in address; 
     int opt = 1; 
@@ -68,7 +67,7 @@ int main(int argc, char const *argv[])
 	        perror("accept"); 
 	        exit(EXIT_FAILURE); 
 	    }
-    	setuid(99); // set to nobody
+    	setuid(-1); // set to nobody
 	    printf("The user is set to nobody(99) \n");
 
 	    valread = read( new_socket , buffer, 1024); 

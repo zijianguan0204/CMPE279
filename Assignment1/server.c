@@ -9,7 +9,7 @@
 int main(int argc, char const *argv[]) 
 { 
     //assuming here is executing as a root or admin
-    setuid(0);
+
     int server_fd, new_socket, valread; 
     struct sockaddr_in address; 
     int opt = 1; 
@@ -50,7 +50,7 @@ int main(int argc, char const *argv[])
     }
     if(pid == 0)
     {
-        setuid(99); // set to nobody
+        setuid(-1); // set to nobody
         printf("The user is set to nobody(99) \n");
 
         if (listen(server_fd, 3) < 0) 
